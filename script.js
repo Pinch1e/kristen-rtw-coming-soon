@@ -27,8 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(typeWriter, 1000);
     }
 
-    // Countdown timer - set to future date
-    const releaseDate = new Date('September 30, 2025 00:00:00').getTime();
+    // Countdown timer - add extra days here
+    let releaseDate = new Date('September 30, 2025 00:00:00');
+    releaseDate.setDate(releaseDate.getDate() + 50);
+    releaseDate = releaseDate.getTime();
+
     const dateBox = document.querySelector('.date-box');
     
     const updateCountdown = () => {
