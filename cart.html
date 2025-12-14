@@ -2,19 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home - KRISTEN</title>
-
-  <!-- Fonts & icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;600&family=Montserrat:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cart - Kristen Couture</title>
 
 
-
-  <!-- Main stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/cart.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
-
 <body>
   <header class="site-header">
     <div class="header-top">
@@ -27,7 +23,7 @@
 
         <!-- Center: Nav -->
         <nav class="nav-menu">
-          <a href="index.html" class="nav-link active">HOME</a>
+          <a href="index.html" class="nav-link">HOME</a>
           <a href="shop.html" class="nav-link">LOOKBOOK</a>
           <a href="about.html" class="nav-link">ABOUT</a>
           <a href="https://kristen-co-couture.myshopify.com/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnTAFWIDWtXis4B1eoWTUVSQyJpNinX9MGaI4sxsl6_3Jyenq8BA8UDaoik5U_aem_ZAkHf1nfCRZg3feGDn87eQ" 
@@ -42,7 +38,7 @@
         <div class="header-right">
           <button class="icon-btn search-trigger" aria-label="Search"><i class="fa fa-search"></i></button>
           <a href="index.html" class="icon-btn" aria-label="Account"><i class="fa fa-user"></i></a>
-          <a href="cart.html" class="icon-btn cart-trigger" aria-label="Cart">
+          <a href="cart.html" class="icon-btn cart-trigger active" aria-label="Cart">
             <i class="fa fa-shopping-cart"></i>
             <span class="cart-badge">0</span>
           </a>
@@ -74,51 +70,35 @@
     </div>
   </div>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero">
-      <img src="images/banner.jpg" alt="Fashion Hero" class="hero-image" />
-
-      <div class="hero-overlay">
-        <h1 class="hero-title">Kristen Signature</h1>
-        <a href="https://kristen-co-couture.myshopify.com/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnTAFWIDWtXis4B1eoWTUVSQyJpNinX9MGaI4sxsl6_3Jyenq8BA8UDaoik5U_aem_ZAkHf1nfCRZg3feGDn87eQ" 
-           target="_blank" 
-           rel="noopener noreferrer" 
-           class="cta-button">
-          <i class="fas fa-shopping-bag"></i>
-          Shop Now
-        </a>
+  <main class="shop-main">
+    <section class="cart-container">
+      <h1>Your Shopping Bag</h1>
+      <div class="cart-grid">
+        <div class="cart-items" id="cart-items">
+          <!-- Cart items will be populated by JavaScript -->
+        </div>
+        <aside class="cart-summary">
+          <div class="summary-box">
+            <h3>Order Summary</h3>
+            <div class="summary-line">
+              <span>Items</span>
+              <span id="summary-count">0</span>
+            </div>
+            <div class="summary-line">
+              <strong>Total</strong>
+              <strong id="summary-total">$0.00</strong>
+            </div>
+            <button id="checkout-btn" class="checkout-btn">Proceed to checkout</button>
+            <a href="shop.html" class="continue-shopping-btn">Continue Shopping</a>
+          </div>
+        </aside>
       </div>
     </section>
   </main>
 
-  <!-- Cart Sidebar -->
-  <div id="cart-sidebar" class="cart-sidebar" aria-hidden="true">
-    <div class="cart-header">
-      <h2>Your Cart</h2>
-      <button id="close-cart" class="close-cart-btn" aria-label="Close cart">&times;</button>
-    </div>
-
-    <div class="cart-items">
-    </div>
-
-    <div class="cart-footer">
-      <div class="cart-total">
-        <span>Total:</span>
-        <strong>$<span id="cart-total">0.00</span></strong>
-      </div>
-      <button class="checkout-btn">Checkout</button>
-    </div>
-  </div>
-
   <!-- Scroll to Top Button -->
-  <button id="scroll-to-top" class="scroll-btn" aria-label="Scroll to top">
+  <button id="scroll-to-top" class="scroll-to-top" aria-label="Scroll to top">
     <i class="fas fa-chevron-up"></i>
-  </button>
-
-  <!-- Scroll to Bottom Button -->
-  <button id="scroll-to-bottom" class="scroll-btn" aria-label="Scroll to bottom">
-    <i class="fas fa-chevron-down"></i>
   </button>
 
   <footer class="site-footer">
@@ -185,32 +165,18 @@
   </footer>
 
 
-
   <script src="assets/js/header.js"></script>
+  <script src="assets/js/mouse-effects.js"></script>
+  <script src="assets/js/cart.js"></script>
+  
+  <!-- Scroll functionality -->
   <script>
-    // Slideshow
-    let slideIndex = 0;
-    const slides = document.querySelectorAll(".slides");
-
-    function showSlides() {
-      if (!slides || slides.length === 0) return;
-      slides.forEach(s => { s.style.display = "none"; s.classList.remove('fade'); });
-      slideIndex++;
-      if (slideIndex > slides.length) slideIndex = 1;
-      slides[slideIndex - 1].style.display = "block";
-      slides[slideIndex - 1].classList.add('fade');
-      setTimeout(showSlides, 4000);
-    }
-    document.addEventListener('DOMContentLoaded', showSlides);
-
-    // Scroll functionality
+    // Scroll to top functionality
     const scrollToTopBtn = document.getElementById('scroll-to-top');
-    const scrollToBottomBtn = document.getElementById('scroll-to-bottom');
     
     window.addEventListener('scroll', () => {
-      // Show/hide scroll to top button
       if (window.pageYOffset > 300) {
-        scrollToTopBtn.style.display = 'flex';
+        scrollToTopBtn.style.display = 'block';
         scrollToTopBtn.style.opacity = '1';
       } else {
         scrollToTopBtn.style.opacity = '0';
@@ -220,31 +186,11 @@
           }
         }, 300);
       }
-
-      // Show/hide scroll to bottom button
-      if (window.pageYOffset < document.body.scrollHeight - window.innerHeight - 300) {
-        scrollToBottomBtn.style.display = 'flex';
-        scrollToBottomBtn.style.opacity = '1';
-      } else {
-        scrollToBottomBtn.style.opacity = '0';
-        setTimeout(() => {
-          if (scrollToBottomBtn.style.opacity === '0') {
-            scrollToBottomBtn.style.display = 'none';
-          }
-        }, 300);
-      }
     });
 
     scrollToTopBtn.addEventListener('click', () => {
       window.scrollTo({
         top: 0,
-        behavior: 'smooth'
-      });
-    });
-
-    scrollToBottomBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: document.body.scrollHeight,
         behavior: 'smooth'
       });
     });

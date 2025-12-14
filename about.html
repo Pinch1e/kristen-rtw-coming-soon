@@ -2,19 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home - KRISTEN</title>
-
-  <!-- Fonts & icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;600&family=Montserrat:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About - Kristen Couture</title>
 
 
-
-  <!-- Main stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:ital,wght@0,300;0,600;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
-
 <body>
   <header class="site-header">
     <div class="header-top">
@@ -27,9 +22,9 @@
 
         <!-- Center: Nav -->
         <nav class="nav-menu">
-          <a href="index.html" class="nav-link active">HOME</a>
+          <a href="index.html" class="nav-link">HOME</a>
           <a href="shop.html" class="nav-link">LOOKBOOK</a>
-          <a href="about.html" class="nav-link">ABOUT</a>
+          <a href="about.html" class="nav-link active">ABOUT</a>
           <a href="https://kristen-co-couture.myshopify.com/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnTAFWIDWtXis4B1eoWTUVSQyJpNinX9MGaI4sxsl6_3Jyenq8BA8UDaoik5U_aem_ZAkHf1nfCRZg3feGDn87eQ" 
              target="_blank" 
              rel="noopener noreferrer" 
@@ -75,41 +70,37 @@
   </div>
 
   <main>
-    <!-- HERO -->
-    <section class="hero">
-      <img src="images/banner.jpg" alt="Fashion Hero" class="hero-image" />
+    <section class="about-banner">
+      <img src="images/Lagos.jpg" alt="About Banner" class="about-banner-image" />
+      <div class="about-text-overlay">
+        <h2>Our Story</h2>
+        <p>
+          Kristen is a modern fashion brand inspired by the elegance and simplicity of timeless style.
+          We celebrate individuality and confidence, bringing you fashion-forward pieces that speak volumes.
+          Our commitment is to quality, sustainability, and a look that transcends trends.
+        </p>
+      </div>
+    </section>
 
-      <div class="hero-overlay">
-        <h1 class="hero-title">Kristen Signature</h1>
-        <a href="https://kristen-co-couture.myshopify.com/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnTAFWIDWtXis4B1eoWTUVSQyJpNinX9MGaI4sxsl6_3Jyenq8BA8UDaoik5U_aem_ZAkHf1nfCRZg3feGDn87eQ" 
-           target="_blank" 
-           rel="noopener noreferrer" 
-           class="cta-button">
-          <i class="fas fa-shopping-bag"></i>
-          Shop Now
-        </a>
+    <!-- Additional About Content -->
+    <section class="features">
+      <h2 class="section-heading">Why Choose Kristen</h2>
+      <div class="features-grid">
+        <div class="feature-item">
+          <h3>Timeless Elegance</h3>
+          <p>Our designs blend contemporary trends with classic sophistication.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Quality Craftsmanship</h3>
+          <p>Every piece is carefully crafted with attention to detail and premium materials.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Sustainable Fashion</h3>
+          <p>We're committed to ethical production and environmentally conscious practices.</p>
+        </div>
       </div>
     </section>
   </main>
-
-  <!-- Cart Sidebar -->
-  <div id="cart-sidebar" class="cart-sidebar" aria-hidden="true">
-    <div class="cart-header">
-      <h2>Your Cart</h2>
-      <button id="close-cart" class="close-cart-btn" aria-label="Close cart">&times;</button>
-    </div>
-
-    <div class="cart-items">
-    </div>
-
-    <div class="cart-footer">
-      <div class="cart-total">
-        <span>Total:</span>
-        <strong>$<span id="cart-total">0.00</span></strong>
-      </div>
-      <button class="checkout-btn">Checkout</button>
-    </div>
-  </div>
 
   <!-- Scroll to Top Button -->
   <button id="scroll-to-top" class="scroll-btn" aria-label="Scroll to top">
@@ -188,64 +179,42 @@
 
   <script src="assets/js/header.js"></script>
   <script>
-    // Slideshow
-    let slideIndex = 0;
-    const slides = document.querySelectorAll(".slides");
-
-    function showSlides() {
-      if (!slides || slides.length === 0) return;
-      slides.forEach(s => { s.style.display = "none"; s.classList.remove('fade'); });
-      slideIndex++;
-      if (slideIndex > slides.length) slideIndex = 1;
-      slides[slideIndex - 1].style.display = "block";
-      slides[slideIndex - 1].classList.add('fade');
-      setTimeout(showSlides, 4000);
-    }
-    document.addEventListener('DOMContentLoaded', showSlides);
-
     // Scroll functionality
-    const scrollToTopBtn = document.getElementById('scroll-to-top');
-    const scrollToBottomBtn = document.getElementById('scroll-to-bottom');
-    
-    window.addEventListener('scroll', () => {
-      // Show/hide scroll to top button
-      if (window.pageYOffset > 300) {
-        scrollToTopBtn.style.display = 'flex';
-        scrollToTopBtn.style.opacity = '1';
-      } else {
-        scrollToTopBtn.style.opacity = '0';
-        setTimeout(() => {
-          if (scrollToTopBtn.style.opacity === '0') {
-            scrollToTopBtn.style.display = 'none';
-          }
-        }, 300);
+    document.addEventListener('DOMContentLoaded', function() {
+      const scrollToTop = document.getElementById('scroll-to-top');
+      const scrollToBottom = document.getElementById('scroll-to-bottom');
+
+      if (scrollToTop) {
+        scrollToTop.addEventListener('click', function() {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
       }
 
-      // Show/hide scroll to bottom button
-      if (window.pageYOffset < document.body.scrollHeight - window.innerHeight - 300) {
-        scrollToBottomBtn.style.display = 'flex';
-        scrollToBottomBtn.style.opacity = '1';
-      } else {
-        scrollToBottomBtn.style.opacity = '0';
-        setTimeout(() => {
-          if (scrollToBottomBtn.style.opacity === '0') {
-            scrollToBottomBtn.style.display = 'none';
-          }
-        }, 300);
+      if (scrollToBottom) {
+        scrollToBottom.addEventListener('click', function() {
+          window.scrollTo({
+            top: document.body.scrollHeight,
+            behavior: 'smooth'
+          });
+        });
       }
-    });
 
-    scrollToTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
+      // Show/hide scroll buttons based on scroll position
+      window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+          scrollToTop.style.display = 'block';
+        } else {
+          scrollToTop.style.display = 'none';
+        }
 
-    scrollToBottomBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: 'smooth'
+        if (window.pageYOffset < document.body.scrollHeight - window.innerHeight - 300) {
+          scrollToBottom.style.display = 'block';
+        } else {
+          scrollToBottom.style.display = 'none';
+        }
       });
     });
   </script>

@@ -1,0 +1,32 @@
+/* Cart page styles */
+.cart-container { max-width:1200px; margin:2.4rem auto; padding:0 1.5rem; }
+.cart-container h1 { font-size:2rem; font-weight:700; margin-bottom:1.6rem; color:#111; }
+.cart-grid { display:grid; grid-template-columns: 1fr 360px; gap:1.6rem; align-items:start; }
+
+.cart-items { background:#fff; border:1px solid #eee; padding:1.4rem; border-radius:8px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
+.cart-items > p { color:#999; text-align:center; padding:2rem 0; font-weight:500; }
+
+.cart-item { display:flex; gap:1.2rem; padding:1.2rem 0; border-bottom:1px solid #f1f1f1; align-items:flex-start; }
+.cart-item:last-child { border-bottom: none; }
+.cart-item img{ width:100px; height:100px; object-fit:cover; border-radius:6px; flex-shrink:0; }
+
+.item-meta { flex:1; display:flex; flex-direction:column; gap:.4rem; }
+.item-name { font-weight:700; color:#111; font-size:0.98rem; }
+.item-price { font-weight:700; color:#111; font-size:1.08rem; }
+
+.item-qty { display:flex; gap:.6rem; align-items:center; margin-top:.8rem; }
+.qty-btn { width:36px; height:36px; border-radius:6px; border:1px solid #ddd; background:#fff; cursor:pointer; font-weight:600; transition:all .18s ease; }
+.qty-btn:hover { border-color:#111; background:#f8f8f8; }
+.qty-btn:active { transform: scale(0.95); }
+
+.remove-btn { background:none; border:none; color:#e30052; cursor:pointer; font-size:0.9rem; font-weight:600; transition:opacity .18s ease; padding:0; }
+.remove-btn:hover { opacity:0.7; }
+
+.cart-summary .summary-box{ border:1px solid #eee; padding:1.4rem; border-radius:8px; background:#fafafa; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+.summary-line{ display:flex; justify-content:space-between; align-items:center; padding:0.8rem 0; font-size:0.96rem; }
+.summary-line strong{ font-weight:700; font-size:1.08rem; }
+
+.checkout-btn{ width:100%; padding:1rem; background:#e30052; color:#fff; border:none; border-radius:6px; cursor:pointer; font-weight:700; font-size:0.98rem; letter-spacing:0.5px; transition:all .24s ease; margin-top:1rem; }
+.checkout-btn:hover { background:#c7003f; transform:translateY(-1px); box-shadow:0 6px 16px rgba(227,0,82,0.3); }
+
+@media (max-width:900px){ .cart-grid{ grid-template-columns: 1fr; } .cart-summary .summary-box { position:sticky; top:2rem; } }
