@@ -1,20 +1,31 @@
 /* Shop JS: renders products and implements add-to-cart using localStorage with Masonry Grid Layout */
 (function(){
   const allImages = [
+
     'images/adaeze.jpg','images/adaeze2.jpg','images/amira.jpg','images/amira2.jpg',
-    'images/Annabelle (1).jpg','images/Annabelle (5).JPG','images/Annabelle (6).JPG','images/Annabelle (7).jpg',
+    'images/Annabelle (1).jpg','images/Annabelle (5).jpg','images/Annabelle (6).jpg','images/Annabelle (7).jpg',
     'images/Annabelle (8).jpg','images/Annabelle (9).jpg','images/arike.jpg','images/arike2.jpg',
-    'images/Bee (1).jpg','images/Bee (3).jpg','images/Bee (4).JPG','images/Butler (1).jpg','images/Butler (2).jpg',
-    'images/Butler (3).JPG','images/Diane (1).jpg','images/Diane (2).JPG','images/Diane (3).jpg','images/Ego Oyibo (1).jpg',
-    'images/Ego Oyibo (2).JPG','images/Ego Oyibo (3).JPG','images/Ego Oyibo (4).jpg','images/Emerald (1).JPG','images/Emerald (2).jpg',
-    'images/Emerald (3).jpg','images/Ezzy (1).jpg','images/Ezzy (4).JPG','images/Ezzy (5).jpg','images/Ezzy (6).JPG',
-    'images/Jasmine (1).jpg','images/Jasmine (2).jpg','images/Jasmine (3).JPG','images/Lavish (1).jpg','images/Lavish (2).jpg',
-    'images/New Wine (1).jpg','images/New Wine (2).jpg','images/Pearl (1).jpg','images/Pearl (4).jpg','images/Pearl (5).JPG',
-    'images/Pearl (6).jpg','images/Rachet (1).jpg','images/Rachet (2).JPG','images/Rachet (3).jpg','images/Sophia (1).JPG',
-    'images/Sophia (2).jpg','images/Tinker Bell (1).jpg','images/Tinker Bell (4).jpg','images/Tinker Bell (5).JPG','images/Tinker Bell (6).jpg',
-    'images/Vantage (1).jpg','images/Vantage (2).jpg','images/Vantage (3).jpg','images/Vantage (4).JPG','images/Yolanda (1).jpeg',
+    'images/Bee (1).jpg','images/Bee (3).jpg','images/Bee (4).jpg','images/Butler (1).jpg','images/Butler (2).jpg',
+    'images/Butler (3).jpg','images/Diane (1).jpg','images/Diane (2).jpg','images/Diane (3).jpg','images/Ego Oyibo (1).jpg',
+
+
+
+    'images/Ezzy (1).jpg','images/Ezzy (4).jpg','images/Ezzy (5).jpg','images/Ezzy (6).jpg',
+
+    'images/Jasmine (1).jpg','images/Jasmine (2).jpg','images/Jasmine (3).jpg','images/Lavish (1).jpg','images/Lavish (2).jpg',
+
+    'images/New Wine (1).jpg','images/New Wine (2).jpg','images/Pearl (1).jpg','images/Pearl (4).jpg','images/Pearl (5).jpg',
+
+
+
+
+    'images/Pearl (6).jpg','images/Rachet (1).jpg','images/Rachet (2).jpg','images/Rachet (3).jpg','images/Tinker Bell (1).jpg','images/Tinker Bell (4).jpg','images/Tinker Bell (5).jpg','images/Tinker Bell (6).jpg',
+
+    'images/Vantage (1).jpg','images/Vantage (2).jpg','images/Vantage (3).jpg','images/Vantage (4).jpg','images/Yolanda (1).jpeg',
     'images/Yolanda (2).jpeg','images/Zara (1).jpg','images/Zara (2).jpg','images/Zoe (1).jpg','images/Zoe (2).jpg','images/Zoe (3).jpg'
   ];
+
+
 
 
   // Normalize image file extensions to lowercase and fix any path issues
@@ -35,11 +46,15 @@
     return groups;
   }
 
+
+
   function createCard(name, images){
     const displayName = name.split(' ').map(w=> w.charAt(0).toUpperCase()+w.slice(1).toLowerCase()).join(' ');
     const mainImg = images[0];
     const card = document.createElement('div');
     card.className = 'product-card kc-reveal';
+    
+
     const thumbsHtml = images.map((img, i)=>`<img src="${img}" data-img="${img}" class="thumb ${i===0? 'active':''}"/>`).join('');
     card.innerHTML = `
       <div class="product-images">
@@ -77,6 +92,9 @@
         </a>
       </div>
     `;
+
+
+
 
     // Events for thumbnail navigation
     const mainImgEl = card.querySelector('.product-main-img');
