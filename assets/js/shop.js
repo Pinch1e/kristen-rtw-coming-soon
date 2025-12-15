@@ -16,8 +16,12 @@
     'images/Yolanda (2).jpeg','images/Zara (1).jpg','images/Zara (2).jpg','images/Zoe (1).jpg','images/Zoe (2).jpg','images/Zoe (3).jpg'
   ];
 
-  // Normalize image file extensions to lowercase
-  const normalizedImages = allImages.map(img => img.replace(/\.JPG$/i, '.jpg').replace(/\.JPEG$/i, '.jpeg'));
+
+  // Normalize image file extensions to lowercase and fix any path issues
+  const normalizedImages = allImages.map(img => {
+    // Fix case sensitivity issues and ensure proper paths
+    return img.replace(/\.JPG$/i, '.jpg').replace(/\.JPEG$/i, '.jpeg');
+  });
 
   function groupImagesByBaseName(images){
     const groups = {};
@@ -142,26 +146,86 @@
       return card;
     });
 
+
     // Add all cards to grid
     cards.forEach(card => grid.appendChild(card));
     
-    // Trigger reflow after render
-    setTimeout(() => applyMasonry(), 150);
+    // Trigger reflow after render and enforce mobile layout
+    setTimeout(() => {
+      applyMasonry();
+      enforceMobileLayout();
+    }, 150);
   }
+
+
 
   // Masonry layout: CSS Grid with grid-auto-flow: dense handles it; refresh layout on resize
   function applyMasonry(){
     // Grid layout is handled by CSS grid-auto-rows and grid-auto-flow: dense
-    // This function triggers a reflow for responsive behavior
+    // This function triggers a reflow for responsive behavior without overriding CSS
     const grid = document.getElementById('products-grid');
     if(!grid) return;
-    // Force reflow by toggling grid display
-    grid.style.display = 'none';
+    
+    // Force reflow without overriding CSS grid properties
+    grid.style.transform = 'translateZ(0)';
     void grid.offsetHeight; // Trigger reflow
-    grid.style.display = 'grid';
+    grid.style.transform = '';
+  }
+
+
+  // Force mobile 2-column layout for mobile devices
+  function enforceMobileLayout() {
+    const grid = document.getElementById('products-grid');
+    if (!grid) return;
+    
+    if (window.innerWidth <= 600) {
+      grid.style.display = 'grid';
+      grid.style.gridTemplateColumns = 'repeat(2, 1fr)';
+      grid.style.gap = '12px';
+      grid.style.padding = '0 10px';
+      
+      // Force all product cards to be full width
+      const cards = grid.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        card.style.width = '100%';
+        card.style.minWidth = 'auto';
+        card.style.maxWidth = 'none';
+        card.style.margin = '0';
+      });
+    }
+  }
+
+  // Get dynamic header height for proper positioning
+  function getHeaderHeight() {
+    const header = document.querySelector('.site-header');
+    if (!header) return 80;
+    
+    const styles = window.getComputedStyle(header);
+    const height = parseInt(styles.height) || 80;
+    return height;
+  }
+
+  // Update overlays to account for dynamic header height
+  function updateOverlays() {
+    const headerHeight = getHeaderHeight();
+    
+    // Update search overlay position
+    const searchOverlay = document.querySelector('.search-overlay');
+    if (searchOverlay) {
+      searchOverlay.style.top = headerHeight + 'px';
+    }
+    
+    // Update mobile menu overlay position
+    const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
+    if (mobileMenuOverlay) {
+      mobileMenuOverlay.style.top = headerHeight + 'px';
+      mobileMenuOverlay.style.height = `calc(100vh - ${headerHeight}px)`;
+    }
   }
 
   
+
+
 
   // Debounced resize handler
   let resizeTimeout;
@@ -169,6 +233,8 @@
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
       applyMasonry();
+      enforceMobileLayout();
+      updateOverlays();
     }, 250);
   }
 
@@ -279,9 +345,19 @@
   }
 
 
+
+
   // INITIALIZATION
   generateProducts();
   wireControls();
+  
+  // Apply mobile layout and update overlays on load
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      enforceMobileLayout();
+      updateOverlays();
+    }, 100);
+  });
 
   // DEBUG: global access to products list (cart functions removed)
   window._kc_allProducts = normalizedImages;

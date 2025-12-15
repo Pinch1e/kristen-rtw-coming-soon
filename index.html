@@ -13,8 +13,11 @@
 
 
 
+
+
   <!-- Main stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/style.css?v=2" />
+  <link rel="stylesheet" href="assets/css/shop.css?v=2" />
 </head>
 
 <body>
@@ -76,6 +79,7 @@
     </div>
   </div>
 
+
   <main>
     <!-- HERO -->
     <section class="hero">
@@ -91,6 +95,27 @@
           Shop Now
         </a>
       </div>
+    </section>
+
+    <!-- PRODUCTS GRID -->
+    <section class="shop-main">
+      <div class="shop-controls">
+        <div class="controls-left">
+          <label for="shop-search" class="sr-only">Search products</label>
+          <input id="shop-search" type="search" placeholder="Search designs, e.g. Zara" aria-label="Search designs" />
+          <button id="clear-search" class="clear-btn" title="Clear search" aria-label="Clear search">×</button>
+        </div>
+        <div class="controls-right">
+          <label for="shop-sort" class="sort-label">Sort by</label>
+          <select id="shop-sort" aria-label="Sort designs">
+            <option value="featured">Featured</option>
+            <option value="name-asc">Name: A–Z</option>
+          </select>
+        </div>
+      </div>
+
+
+      <div class="products-grid" id="products-grid" style="display: grid;"></div>
     </section>
   </main>
 
@@ -188,7 +213,9 @@
 
 
 
+
   <script src="assets/js/header.js"></script>
+  <script src="assets/js/shop.js"></script>
   <script>
     // Slideshow
     let slideIndex = 0;
@@ -243,6 +270,8 @@
         behavior: 'smooth'
       });
     });
+
+
 
     scrollToBottomBtn.addEventListener('click', () => {
       window.scrollTo({
