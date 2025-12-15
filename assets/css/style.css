@@ -74,12 +74,39 @@ body {
 
 
 
+
+
 main { 
   flex: 1 0 auto; 
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
   padding: var(--spacing-xl) var(--spacing-lg);
+}
+
+/* Force full width on mobile to eliminate white border */
+@media (max-width: 768px) {
+  main {
+    max-width: 100%;
+    margin: 0;
+  }
+}
+
+
+
+
+
+/* Main padding - eliminate all padding on mobile to fix white border */
+@media (max-width: 768px) {
+  main {
+    padding: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 0;
+  }
 }
 
 
@@ -357,6 +384,7 @@ main {
 
 
 
+
 /* Mobile Menu Overlay */
 .mobile-menu-overlay {
   position: fixed;
@@ -367,11 +395,19 @@ main {
   background: var(--bg-primary);
   border-right: 1px solid var(--border-light);
   z-index: 999;
-  transform: translateX(-284px);
+  transform: translateX(-280px);
   transition: all var(--transition-normal);
   padding: var(--spacing-xl);
   overflow-y: auto;
   box-shadow: var(--shadow-medium);
+}
+
+/* Ensure mobile menu doesn't create white border */
+@media (max-width: 768px) {
+  .mobile-menu-overlay {
+    width: 280px;
+    transform: translateX(-280px);
+  }
 }
 
 .mobile-menu-overlay.active {
@@ -1302,16 +1338,17 @@ main {
 /* Note: Shop controls are primarily styled in shop.css */
 /* Additional luxury enhancements can be added here if needed */
 
+
 /* Force mobile layout for products grid - 2 columns on mobile */
 @media (max-width: 600px) {
   .products-grid {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 12px !important;
-    padding: 0 10px !important;
-    justify-content: center !important;
+    gap: 8px !important;
+    padding: 0 !important;
+    justify-content: stretch !important;
   }
-  
+
   .product-card {
     width: 100% !important;
     min-width: auto !important;
@@ -1378,15 +1415,16 @@ main {
     font-size: clamp(28px, 8vw, 48px);
   }
 
+
   body {
-    margin: 4px;
+    margin: 0;
     padding-top: 80px;
   }
 
   .site-header {
-    top: 4px;
-    left: 4px;
-    right: 4px;
+    top: 0;
+    left: 0;
+    right: 0;
     height: 72px; /* Slightly smaller on mobile */
   }
 
@@ -1402,11 +1440,14 @@ main {
     font-size: 1rem;
   }
 
+
   /* Enhanced mobile menu overlay */
   .mobile-menu-overlay {
     top: 72px;
     height: calc(100vh - 72px);
     padding: var(--spacing-lg);
+    width: 280px;
+    transform: translateX(-280px);
   }
 
   /* Mobile search overlay */
@@ -1532,19 +1573,22 @@ main {
     right: 1px;
   }
 
+
   .site-header {
     height: 68px;
-    top: 2px;
-    left: 2px;
-    right: 2px;
+    top: 0;
+    left: 0;
+    right: 0;
   }
+
 
   .mobile-menu-overlay {
     top: 68px;
     height: calc(100vh - 68px);
-    width: 100%;
+    width: 280px;
     left: 0;
     border-radius: 0;
+    transform: translateX(-280px);
   }
 
   .search-overlay {
@@ -1567,15 +1611,17 @@ main {
   }
 }
 
+
 /* CRITICAL: Force mobile 2-column layout for products grid */
 @media screen and (max-width: 600px) {
   #products-grid {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 12px !important;
-    padding: 0 10px !important;
+    gap: 8px !important;
+    padding: 0 !important;
+    justify-content: stretch !important;
   }
-  
+
   #products-grid .product-card {
     width: 100% !important;
     min-width: auto !important;

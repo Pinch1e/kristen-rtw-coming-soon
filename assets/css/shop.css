@@ -20,13 +20,35 @@
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+
+
+
+
 /* Shop specific styles: product grid, cards and thumbnails */
 .shop-main { 
   max-width:1400px; 
   margin: var(--spacing-3xl) auto; 
-  padding: 0 var(--spacing-lg);
-  padding-top: 100px; /* Account for fixed header */
+  padding: 100px 0 var(--spacing-3xl);
+  /* Remove horizontal padding completely to fix mobile white border */
 }
+
+/* CRITICAL: Force full width on mobile to eliminate white border */
+@media (max-width: 768px) {
+  .shop-main {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 80px 0 var(--spacing-lg) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .shop-main {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 72px 0 var(--spacing-md) !important;
+  }
+}
+
 
 /* Controls bar (search + sort) */
 .shop-controls { 
@@ -40,6 +62,17 @@
   border-radius: 8px;
   padding: var(--spacing-lg);
   box-shadow: var(--shadow-subtle);
+}
+
+/* Remove padding from shop-controls on mobile to prevent white border */
+@media (max-width: 768px) {
+  .shop-controls {
+    margin: 0 var(--spacing-sm) var(--spacing-lg);
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    padding: 0;
+  }
 }
 
 .shop-controls .controls-left{ 
@@ -116,6 +149,7 @@
   box-shadow: 0 0 0 2px rgba(166, 124, 82, 0.1);
 }
 
+
 /* Masonry Grid Layout */
 .products-grid {
   display: grid;
@@ -127,6 +161,17 @@
   position: relative;
 }
 
+/* CRITICAL: Force full width and eliminate white border on mobile */
+@media (max-width: 768px) {
+  .products-grid {
+    width: 100vw !important;
+    margin-left: calc(-50vw + 50%) !important;
+    padding: 0 var(--spacing-sm) !important;
+    box-sizing: border-box !important;
+  }
+}
+
+
 
 
 
@@ -135,11 +180,11 @@
   .products-grid {
     display: grid !important;
     grid-template-columns: repeat(2, 1fr) !important;
-    gap: 12px !important;
-    padding: 0 10px !important;
-    justify-content: center !important;
+    gap: 8px !important;
+    padding: 0 !important;
+    justify-content: stretch !important;
   }
-  
+
   .product-card {
     min-width: auto !important;
     width: 100% !important;
@@ -542,10 +587,11 @@
 @media (max-width: 400px) {
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    padding: 0 8px;
+    gap: 8px;
+    padding: 0;
+    justify-content: stretch;
   }
-  
+
   .shop-main {
     padding: 0 1rem;
   }
