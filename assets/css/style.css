@@ -1059,11 +1059,19 @@ main {
   font-family: var(--font-body);
 }
 
+
 .footer-bottom-right {
   display: flex;
   align-items: center;
   gap: var(--spacing-lg);
   flex-wrap: wrap;
+}
+
+.footer-bottom-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .payment-methods {
@@ -1089,9 +1097,34 @@ main {
   padding: var(--spacing-xs);
 }
 
+
 .payment-methods i:hover {
   color: var(--accent-mocha);
   transform: translateY(-1px) scale(1.1);
+}
+
+.developer-credit {
+  text-align: center;
+  margin-top: var(--spacing-sm);
+}
+
+.developer-credit span {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 300;
+  font-family: var(--font-body);
+}
+
+.developer-credit a {
+  color: var(--accent-mocha);
+  text-decoration: none;
+  font-weight: 400;
+  transition: all var(--transition-normal);
+}
+
+.developer-credit a:hover {
+  color: var(--text-primary);
+  text-decoration: underline;
 }
 
 
